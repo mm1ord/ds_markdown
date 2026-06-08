@@ -1,0 +1,23 @@
+appId: com.mkdown.app
+productName: mkdown
+copyright: Copyright © 2026
+
+mac:
+  category: public.app-category.productivity
+  target:
+    - dmg
+  artifactName: ${name}-${version}-mac.${ext}
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  icon: build/icon.icns
+
+dmg:
+  title: mkdown
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - package.json
