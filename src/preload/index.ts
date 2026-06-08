@@ -1,7 +1,10 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge, ipcRenderer, webFrame } from 'electron'
 import type { OpenFolderResult, OpenFileResult, FileContent, WriteFileParams, CreateFileParams, RenameParams, ExportHTMLParams } from '../renderer/types'
 
 contextBridge.exposeInMainWorld('electronAPI', {
+  getZoomFactor: (): number => webFrame.getZoomFactor(),
+
+  setZoomFactor: (factor: number): void => webFrame.setZoomFactor(factor),
   openFolder: (): Promise<OpenFolderResult> =>
     ipcRenderer.invoke('dialog:openFolder'),
 

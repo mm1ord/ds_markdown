@@ -42,7 +42,8 @@ export default function App() {
 
   const applyZoom = useCallback((next: number) => {
     const clamped = Math.min(200, Math.max(50, next))
-    document.documentElement.style.setProperty('--app-zoom', `${clamped / 100}`)
+    const factor = clamped / 100
+    window.electronAPI?.setZoomFactor(factor)
     setZoom(clamped)
   }, [])
 

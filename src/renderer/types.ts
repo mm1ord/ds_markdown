@@ -41,6 +41,8 @@ export interface ExportHTMLParams {
 }
 
 export interface ElectronAPI {
+  getZoomFactor: () => number
+  setZoomFactor: (factor: number) => void
   openFolder: () => Promise<OpenFolderResult | null>
   openFile: () => Promise<OpenFileResult | null>
   readFile: (filePath: string) => Promise<FileContent>
